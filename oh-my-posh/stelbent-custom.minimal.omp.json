@@ -1,0 +1,104 @@
+{
+    "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+    "blocks": [
+      {
+        "alignment": "right",
+        "segments": [
+          {
+            "foreground": "#689f38",
+            "properties": {
+              "time_format": "15:04:05"
+            },
+            "style": "plain",
+            "template": "{{ .CurrentDate | date .Format }}",
+            "type": "time"
+          }
+        ],
+        "type": "prompt"
+      },
+      {
+        "alignment": "left",
+        "newline": true,
+        "segments": [
+          {
+            "foreground": "#757575",
+            "foreground_templates": [
+              "{{ if .Root }}#ff3d3d{{ end }}"
+            ],
+            "style": "plain",
+            "template": "\u250c",
+            "type": "text"
+          },
+          {
+            "foreground": "#ffffff",
+            "background": "#757575",
+            "background_templates": [
+              "{{ if .Root }}#ff3d3d{{ end }}"
+              ],
+            "style": "diamond",
+            "template": " {{ if .Root }}root@{{ .HostName }}{{ else }}{{ if eq .UserName \"guill\" }}{{ .HostName }}{{ else }}{{ .UserName }}@{{ .HostName }}{{ end }}{{ end }} ",
+            "type": "session"
+          },
+          {
+            "background": "#dd4814",
+            "background_templates": [
+                "{{ if eq .Shell \"pwsh\" }}#52c8ff{{ end }}",
+                "{{ if eq .Shell \"bash\" }}#dd4814{{ end }}"
+              ],
+            "foreground": "#ffffff",
+            "foreground_templates": [
+              "{{ if eq .Shell \"pwsh\" }}#100E23{{ end }}",
+              "{{ if eq .Shell \"bash\" }}#FFFFFF{{ end }}"
+            ],
+            "powerline_symbol": "\ue0b0",
+            "properties": {
+              "style": "full",
+              "mapped_locations": {
+                "/mnt/d/Users/guill/Code/*": "Code",
+                "D:\\Users\\guill\\Code\\*": "Code"
+              }
+            },
+            "style": "powerline",
+            "template": " {{ .Path }} ",
+            "type": "path"
+          },
+          {
+            "background": "#ec9706",
+            "foreground": "#100e23",
+            "properties": {
+              "always_enabled": true
+            },
+            "style": "diamond",
+            "template": " {{ .FormattedMs }}\u2800",
+            "trailing_diamond": "\ue0b0",
+            "type": "executiontime"
+          }
+        ],
+        "type": "prompt"
+      },
+      {
+        "alignment": "left",
+        "newline": true,
+        "segments": [
+          {
+            "foreground": "#757575",
+            "foreground_templates": [
+              "{{ if .Root }}#ff3d3d{{ end }}"
+            ],
+            "style": "plain",
+            "template": "\u2514",
+            "type": "text"
+          },
+          {
+            "foreground": "#ffffff",
+            "style": "plain",
+            "template": "$",
+            "type": "text"
+          }
+        ],
+        "type": "prompt"
+      }
+    ],
+    "final_space": true,
+    "version": 3
+  }
