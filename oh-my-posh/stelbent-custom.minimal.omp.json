@@ -21,7 +21,7 @@
               "{{ if .Root }}#ff3d3d{{ end }}"
               ],
             "style": "diamond",
-            "template": " {{ if .Root }}root@{{ .HostName }}{{ else }}{{ if eq .UserName \"guill\" }}{{ .HostName }}{{ else }}{{ .UserName }}@{{ .HostName }}{{ end }}{{ end }} ",
+            "template": "{{ if .Root }}  {{ else if eq .UserName \"guill\" }}   {{ else }} {{ .UserName }} {{ end }}",
             "type": "session"
           },
           {
@@ -37,35 +37,24 @@
             ],
             "powerline_symbol": "\ue0b0",
             "properties": {
-              "style": "full",
-              "mapped_locations": {
-                "/mnt/d/Users/guill/Code/*": "Code",
-                "D:\\Users\\guill\\Code\\*": "Code"
-              }
+              "style": "full"
             },
             "style": "powerline",
             "template": " {{ .Path }} ",
             "type": "path"
+
           },
           {
-            "background": "#ec9706",
-            "foreground": "#100e23",
+            "type": "git",
+            "style": "powerline",
+            "powerline_symbol": "\ue0b0",
+            "foreground": "#ffffff",
+            "background": "#b56100",
+            "template": " {{ .HEAD | trunc 25 }} ",
+            "display_condition": "{{ hasPrefix .Path \"D:\\Code\" }}",
             "properties": {
-              "always_enabled": true
-            },
-            "style": "diamond",
-            "template": " {{ .FormattedMs }}\u2800",
-            "trailing_diamond": "\ue0b0",
-            "type": "executiontime"
-          },
-          {
-            "foreground": "#689f38",
-            "properties": {
-              "time_format": "15:04:05"
-            },
-            "style": "plain",
-            "template": " {{ .CurrentDate | date .Format }}",
-            "type": "time"
+              "fetch_branch": true
+            }
           }
         ],
         "type": "prompt"
